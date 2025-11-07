@@ -23,7 +23,7 @@ jobs:
         - name: Setup NodeJS Version
           uses: actions/setup-node@v4
           with:
-            node-version: 18
+            node-version: 20
     
         - name: Install Dependencies
           run: npm install
@@ -41,6 +41,16 @@ jobs:
         name: code-coverage
         runs-on: ubuntu-latest
         steps:
+        - name: Checkout Repository
+          uses: actions/checkout@v4
+
+        - name: Setup NodeJS Version
+          uses: actions/setup-node@v4
+          with:
+            node-version: 18
+    
+        - name: Install Dependencies
+          run: npm install
         - name: Code coverage
           run: npm run code-coverage
         - name: Code-Coverage-Result
@@ -48,6 +58,7 @@ jobs:
           with:
             path: coverage
             retention-days: 5
+
 
 
 
